@@ -3,22 +3,13 @@ FROM golang:1.18 as builder
 ENV GOPATH=""
 ENV GOMODULE="on"
 
-COPY go.mod .
-COPY go.sum .
+COPY . .
 
 RUN go mod download
-
-ADD testing testing
-ADD modules modules
-ADD LICENSE LICENSE
-ADD .git .git
-
-COPY Makefile .
-
 RUN make build
 
-FROM ubuntu:20.04
-
+FROM bitnami/minideb
 COPY --from=builder /go/build/simd /bin/simd
 
 ENTRYPOINT ["simd"]
+
