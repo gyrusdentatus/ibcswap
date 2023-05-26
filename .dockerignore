@@ -1,0 +1,19 @@
+# Ignore documentation
+/doc
+
+# Ignore End-to-End testing
+/e2e
+
+# Ignore logs
+log.json
+
+# Ignore third party folder
+/third_party
+
+# Ignore various files that are typically not necessary for a build
+*.md
+Dockerfile
+LICENSE
+*.yaml
+Makefile
+
